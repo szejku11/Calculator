@@ -5,10 +5,10 @@ class Program
 {
     static void Main(string[] args)
     {
+        int calculatorUsed = 0;
         bool endApp = false;
         // Display title as the C# console calculator app.
-        Console.WriteLine("Console Calculator in C#\r");
-        Console.WriteLine("------------------------\n");
+
 
         Calculator calculator = new Calculator();
 
@@ -20,6 +20,16 @@ class Program
             double result = 0;
 
             // Ask the user to type the first number.
+            Console.Clear();
+            Console.WriteLine("Console Calculator in C#\r");
+            Console.WriteLine("------------------------");
+
+            if (calculatorUsed > 0)
+            {
+                Console.WriteLine($"Calculator used {calculatorUsed} time(s)");
+                Console.WriteLine("------------------------");
+            }
+
             Console.Write("Type a number, and then press Enter: ");
             numInput1 = Console.ReadLine();
 
@@ -58,7 +68,11 @@ class Program
                 {
                     Console.WriteLine("This operation will result in a mathematical error.\n");
                 }
-                else Console.WriteLine("Your result: {0:0.##}\n", result);
+                else
+                {
+                    Console.WriteLine("Your result: {0:0.##}\n", result);
+                    calculatorUsed++;
+                }
             }
             catch (Exception e)
             {
